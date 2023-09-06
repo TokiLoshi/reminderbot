@@ -13,6 +13,7 @@ const client = new Client({
 });
 
 const YOUR_USER_ID = '372517534282416130'
+console.log("Testing");
 
 client.once('ready', () => {
   console.log('Bot is online!');
