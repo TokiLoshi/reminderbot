@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import cron from 'node-cron'
 dotenv.config()
 
 import { Client, GatewayIntentBits, Message } from 'discord.js';
@@ -14,13 +15,8 @@ const client = new Client({
 
 const YOUR_USER_ID = process.env.YOUR_USER_ID;
 
-
 client.once('ready', () => {
   console.log('Bot is online!');
-  setInterval(() => {
-    let today = new Date();
-    let minutes = today.getMinutes();
-    console.log("Time:", minutes);
     const gifURLS = ['https://media.giphy.com/media/vnAC0jrDm0z0aOhp3f/giphy.gif', 
     'https://media.giphy.com/media/35FdSNJrsdxquwq8dh/giphy.gif',
     'https://media.giphy.com/media/IPcT896JyrTFfH3xgo/giphy.gif',
@@ -67,18 +63,19 @@ client.once('ready', () => {
     'It\'s never too late to be what you might have been. Time\'s ticking!',
     'If you\'re waiting for a sign, this is it. Go make waves!',
   ]
-    if (minutes % 2 === 0){
-      let randomNumber = Math.floor(Math.random() * gifURLS.length)
-      let randomQuote = Math.floor(Math.random() * motivationalQuotes.length)
-      console.log(`Random Number: ${randomNumber}`);
-      const reminderMessage = "here is your daily reminder to send Bianca your CV. I also have a cheesy motivational quote for you and a gif. Enjoy!"
-      const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
-      if (targetChannel.isTextBased()){
-        targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${gifURLS[randomNumber]}`);
-        console.log("Message sent at: ", minutes);
-      }
+  cron.schedule('*/15 * * * *', () => {
+  console.log("Cron is scheduled")
+  let randomNumber = Math.floor(Math.random() * gifURLS.length)
+  let randomQuote = Math.floor(Math.random() * motivationalQuotes.length)
+  console.log(`Random Number: ${randomNumber}`);
+  const reminderMessage = "here is your daily reminder to send Bianca your CV. I also have a cheesy motivational quote for you and a gif. Enjoy!"
+  const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
+  if (targetChannel.isTextBased()) {
+    targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${gifURLS[randomNumber]}`);
+    const currentTime = new Date();
+    console.log("Message sent at: ", currentTime.toISOString());
     }
-  }, 30000);
+  });
 });
 
 client.login(process.env.DISCORD_TOKEN);
