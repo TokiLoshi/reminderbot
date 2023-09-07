@@ -63,8 +63,8 @@ client.once('ready', () => {
     'It\'s never too late to be what you might have been. Time\'s ticking!',
     'If you\'re waiting for a sign, this is it. Go make waves!',
   ]
-  cron.schedule('*/5 * * * *', () => {
-  console.log("Cron is scheduled")
+  cron.schedule('15 3 * * *', () => {
+  console.log("Cron is scheduled to run at 3 15")
   let randomNumber = Math.floor(Math.random() * gifURLS.length)
   let randomQuote = Math.floor(Math.random() * motivationalQuotes.length)
   console.log(`Random Number: ${randomNumber}`);
