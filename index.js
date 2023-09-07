@@ -63,19 +63,21 @@ client.once('ready', () => {
     'It\'s never too late to be what you might have been. Time\'s ticking!',
     'If you\'re waiting for a sign, this is it. Go make waves!',
   ]
-  cron.schedule('15 3 * * *', () => {
-  console.log("Cron is scheduled to run at 3 15")
-  let randomNumber = Math.floor(Math.random() * gifURLS.length)
-  let randomQuote = Math.floor(Math.random() * motivationalQuotes.length)
-  console.log(`Random Number: ${randomNumber}`);
-  const reminderMessage = "here is your daily reminder to send Bianca your CV. I also have a cheesy motivational quote for you and a gif. Enjoy!"
-  const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
-  if (targetChannel.isTextBased()) {
-    targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${gifURLS[randomNumber]}`);
-    const currentTime = new Date();
-    console.log("Message sent at: ", currentTime.toISOString());
-    }
+  // cron.schedule('15 3 * * *', () => {
+  cron.schedule('23 03 * * *', () => {
+    console.log("Cron is scheduled to run at 3 15")
+    let randomNumber = Math.floor(Math.random() * gifURLS.length)
+    let randomQuote = Math.floor(Math.random() * motivationalQuotes.length)
+    console.log(`Random Number: ${randomNumber}`);
+    const reminderMessage = "Good morning! Here is your daily reminder to send Bianca your CV. I also have a cheesy motivational quote for you and a gif. Enjoy!"
+    const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
+    if (targetChannel.isTextBased()) {
+      targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${gifURLS[randomNumber]}`);
+      const currentTime = new Date();
+      console.log("Message sent at: ", currentTime.toISOString());
+      }
   });
 });
+
 
 client.login(process.env.DISCORD_TOKEN);
