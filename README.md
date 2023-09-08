@@ -1,1 +1,2 @@
-This is a reminder bot to remind friends
+# ReminderBot
+Reminder bot reminds friends when they ask me to remind me of something but it's several weeks in. Using the Cron library, reminder bot reminds specific user id's at a specific time with a random motivational quote and a randomly selected gif from an array of curatedly appropriate gifs, arranged around the meme 'wen'. 
