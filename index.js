@@ -64,17 +64,6 @@ client.once('ready', () => {
     'If you\'re waiting for a sign, this is it. Go make waves!',
   ]
 
-  cron.schedule('31 16 * * *', () => {
-    const reminderMessage = "of course! I am here to serve. How may I be of assistance?"
-    const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
-    const bowing = 'https://media.giphy.com/media/iDdroSqfT7QKQ/giphy.gif'
-    if (targetChannel.isTextBased()) {
-      targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n ${bowing}`);
-      const currentTime = new Date();
-      console.log("Message sent at: ", currentTime.toISOString());
-      }
-  })
-
   // cron.schedule('15 3 * * *', () => {
   cron.schedule('23 14 * * *', () => {
     console.log("Cron is scheduled to run at 3 15")
