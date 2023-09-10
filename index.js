@@ -40,6 +40,13 @@ client.once('ready', () => {
     'https://media.giphy.com/media/RcMJfTUshib4Bw7t2H/giphy.gif',
     'https://media.giphy.com/media/aufn4sMIx1It8IZhzn/giphy.gif'
   ];
+  const magicGifs = [
+    'https://media.giphy.com/media/Ri7d8I18cto2jufOKc/giphy.gif',
+    'https://media.giphy.com/media/7Xov9qZ44Mq0qkCN9Q/giphy.gif',
+    'https://media.giphy.com/media/lLUh1IHIwn7ljZV6dM/giphy.gif',
+    'https://media.giphy.com/media/cdNSp4L5vCU7aQrYnV/giphy.gif',
+    'https://media.giphy.com/media/48FhEMYGWji8/giphy.gif'
+  ]
   const motivationalQuotes = [
     'Just do it!',
     '"It always seems impossible until it\'s done." - Nelson Mandela',
@@ -65,15 +72,15 @@ client.once('ready', () => {
   ]
 
   // cron.schedule('15 3 * * *', () => {
-  cron.schedule('23 14 * * *', () => {
+  cron.schedule('23 16 * * *', () => {
     console.log("Cron is scheduled to run at 3 15")
-    let randomNumber = Math.floor(Math.random() * gifURLS.length)
+    let randomNumber = Math.floor(Math.random() * magicGifs.length)
     let randomQuote = Math.floor(Math.random() * motivationalQuotes.length)
     console.log(`Random Number: ${randomNumber}`);
-    const reminderMessage = "Good morning! Here is your daily reminder to send Bianca your CV. I also have a cheesy motivational quote for you and a gif. Enjoy!"
+    const reminderMessage = "Good morning! Your friendly local warlock is here with you daily CV reminder. That CV is looking good! Lets finish it! I also have a cheesy motivational quote for you and a gif. Enjoy!"
     const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
     if (targetChannel.isTextBased()) {
-      targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${gifURLS[randomNumber]}`);
+      targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${magicGifs[randomNumber]}`);
       const currentTime = new Date();
       console.log("Message sent at: ", currentTime.toISOString());
       }
