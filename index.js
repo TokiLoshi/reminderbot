@@ -46,6 +46,13 @@ client.once('ready', () => {
     'https://media.giphy.com/media/lLUh1IHIwn7ljZV6dM/giphy.gif',
     'https://media.giphy.com/media/cdNSp4L5vCU7aQrYnV/giphy.gif',
     'https://media.giphy.com/media/48FhEMYGWji8/giphy.gif'
+  ];
+  const linkedInGifs = [
+    'https://media.giphy.com/media/khr2lS27v92PQPD3oa/giphy.gif',
+    'https://media.giphy.com/media/1zR9oeiZVWnSthyW6O/giphy.gif',
+    'https://media.giphy.com/media/wdynSXU7gRDtQ21mrR/giphy.gif',
+    'https://media.giphy.com/media/DJuZTbGExqC9CB1OWN/giphy.gif',
+    'https://media.giphy.com/media/3o7aD50FUyzcIsLBBK/giphy.gif'
   ]
   const motivationalQuotes = [
     'Just do it!',
@@ -76,11 +83,12 @@ client.once('ready', () => {
     console.log("Cron is scheduled to run at 3 15")
     let randomNumber = Math.floor(Math.random() * magicGifs.length)
     let randomQuote = Math.floor(Math.random() * motivationalQuotes.length)
+    let randomLinkedIn = Math.floor(Math.random() * linkedInGifs.length)
     console.log(`Random Number: ${randomNumber}`);
-    const reminderMessage = "Good morning! Your friendly local warlock is here with you daily CV reminder. That CV is looking good! Lets finish it! I also have a cheesy motivational quote for you and a gif. Enjoy!"
+    const reminderMessage = "Good morning! Congrats on getting that CV done! It's looking great! Your friendly local warlock is here with you daily reminder. Lets finish that LinkedIn Profile! I also have a cheesy motivational quote for you and a gif. Enjoy!"
     const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
     if (targetChannel.isTextBased()) {
-      targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${magicGifs[randomNumber]}`);
+      targetChannel.send(`<@${YOUR_USER_ID}>, ${reminderMessage}\n Daily Motivation Cheese (might have come from a chatbot...might not...) \n ${motivationalQuotes[randomQuote]} \n ${linkedInGifs[randomLinkedIn]}`);
       const currentTime = new Date();
       console.log("Message sent at: ", currentTime.toISOString());
       }
