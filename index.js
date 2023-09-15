@@ -124,7 +124,7 @@ client.once('ready', () => {
   ]
 
   // cron.schedule('15 3 * * *', () => {
-  cron.schedule('23 16 * * *', () => {
+  cron.schedule('40 16 * * *', () => {
     console.log("Cron is scheduled to run at 16:23");
     let randomGif = Math.floor(Math.random() * sendCVGifs.length);
     let randomQuote = Math.floor(Math.random() * motivationalQuotes.length);
