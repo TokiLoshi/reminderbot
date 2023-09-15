@@ -124,11 +124,12 @@ client.once('ready', () => {
   ]
 
   // cron.schedule('15 3 * * *', () => {
-  cron.schedule('40 16 * * *', () => {
-    console.log("Cron is scheduled to run at 16:23");
+  cron.schedule('44 16 * * *', () => {
+    console.log("Cron is scheduled to run at 16:44");
     let randomGif = Math.floor(Math.random() * sendCVGifs.length);
+    console.log("Random Gif Picked: ", randomGif);
     let randomQuote = Math.floor(Math.random() * motivationalQuotes.length);
-    console.log(`Random Number: ${randomNumber}`);
+    console.timeLog("RandomQuote: ", randomQuote);
     const reminderMessage = "Good morning! That CV is looking so good! It's time for other people to see it. Your friendly local warlock is here with you daily reminder. Time to send out your CV, let's get it out there! I also have a cheesy motivational quote for you and a gif. Enjoy!"
     const targetChannel = client.channels.cache.get(process.env.DISCORD_CHANNEL);
     if (targetChannel.isTextBased()) {
